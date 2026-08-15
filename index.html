@@ -1,11 +1,294 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ema's Github Profile!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Ema's personal portfolio, featuring planned sections for projects, a resume, and contact information."
+  >
+  <title>Ema's Personal Portfolio</title>
+  <style>
+    :root {
+      --beige-100: #fff7e8;
+      --beige-200: #f5e8d0;
+      --beige-300: #e6cfaa;
+      --beige-400: #d6b98b;
+      --blue-300: #9cb8cc;
+      --blue-500: #537c99;
+      --blue-700: #2f5875;
+      --blue-900: #173b57;
+      --blue-shadow: rgba(23, 59, 87, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      background: var(--beige-100);
+      color: var(--blue-900);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    .site-header {
+      padding: 1.25rem clamp(1rem, 4vw, 4rem) 0;
+    }
+
+    .banner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: clamp(2rem, 6vw, 4.5rem);
+      border: 2px solid var(--blue-700);
+      border-radius: 2rem 2rem 0.75rem 0.75rem;
+      background: var(--blue-900);
+      color: var(--beige-100);
+      box-shadow: 0 1rem 2.5rem var(--blue-shadow);
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--beige-300);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 18ch;
+      margin: 0 auto;
+      font-size: clamp(2.25rem, 7vw, 5.25rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    .banner-copy {
+      max-width: 42rem;
+      margin: 1.25rem auto 0;
+      color: var(--beige-200);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .primary-navigation {
+      max-width: 62rem;
+      margin: -1.25rem auto 0;
+      padding: 0 1rem;
+    }
+
+    .primary-navigation ol {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 0;
+      padding: 1rem;
+      border: 2px solid var(--blue-700);
+      border-radius: 1.25rem;
+      background: var(--beige-200);
+      box-shadow: 0 0.75rem 1.75rem var(--blue-shadow);
+      list-style: none;
+    }
+
+    .primary-navigation button {
+      min-height: 2.75rem;
+      padding: 0.65rem 1.15rem;
+      border: 2px solid var(--blue-700);
+      border-radius: 999px;
+      background: var(--beige-100);
+      color: var(--blue-900);
+      font: 700 0.9rem/1.2 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.03em;
+      cursor: default;
+    }
+
+    .primary-navigation button:hover {
+      background: var(--beige-300);
+    }
+
+    .primary-navigation button:focus-visible {
+      outline: 3px solid var(--beige-100);
+      outline-offset: 2px;
+      background: var(--blue-700);
+      color: var(--beige-100);
+      box-shadow: 0 0 0 6px var(--blue-300);
+    }
+
+    main {
+      width: min(68rem, calc(100% - 2rem));
+      margin: clamp(2.5rem, 7vw, 6rem) auto;
+    }
+
+    .introduction {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 5rem);
+    }
+
+    .welcome-copy {
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    .section-label {
+      margin: 0 0 0.5rem;
+      color: var(--blue-700);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .welcome-copy p:last-child {
+      max-width: 38rem;
+      margin: 1.25rem 0 0;
+      color: var(--blue-700);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .portrait {
+      margin: 0;
+      padding: 1rem;
+      border: 2px solid var(--blue-700);
+      border-radius: 50% 50% 1.5rem 1.5rem;
+      background: var(--beige-200);
+      box-shadow: 0.9rem 0.9rem 0 var(--beige-300);
+    }
+
+    .portrait-placeholder {
+      display: grid;
+      min-height: clamp(18rem, 38vw, 27rem);
+      place-items: center;
+      padding: 2rem;
+      border: 2px dashed var(--blue-500);
+      border-radius: 50% 50% 1rem 1rem;
+      background: var(--beige-100);
+      color: var(--blue-700);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    figcaption {
+      padding: 1rem 0.5rem 0.25rem;
+      color: var(--blue-700);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .site-header {
+        padding-inline: 0.75rem;
+      }
+
+      .banner {
+        padding: 2.5rem 1.25rem 3rem;
+        border-radius: 1.5rem 1.5rem 0.75rem 0.75rem;
+      }
+
+      .primary-navigation {
+        padding-inline: 0.5rem;
+      }
+
+      .primary-navigation ol {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .primary-navigation button {
+        width: 100%;
+        height: 100%;
+      }
+
+      .introduction {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome-copy {
+        text-align: center;
+      }
+
+      .welcome-copy p:last-child {
+        margin-inline: auto;
+      }
+
+      .portrait {
+        width: min(24rem, 100%);
+        margin-inline: auto;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .primary-navigation ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>In progress...</h1>
-  <p>Welcome to my website.</p>
+  <header class="site-header">
+    <div class="banner">
+      <p class="eyebrow">Hello &amp; welcome</p>
+      <h1>Hi, I'm Ema—welcome to my personal portfolio.</h1>
+      <p class="banner-copy">
+        A thoughtful little corner for my work, experience, and the ideas I am
+        excited to share.
+      </p>
+    </div>
+
+    <nav class="primary-navigation" aria-label="Planned portfolio sections">
+      <ol>
+        <li><button type="button" aria-disabled="true">About Me</button></li>
+        <li><button type="button" aria-disabled="true">Projects</button></li>
+        <li><button type="button" aria-disabled="true">Resume</button></li>
+        <li>
+          <button type="button" aria-disabled="true">Contact Information</button>
+        </li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+    <section class="introduction" aria-labelledby="welcome-heading">
+      <div class="welcome-copy">
+        <p class="section-label">A little introduction</p>
+        <h2 id="welcome-heading">This space is growing with me.</h2>
+        <p>
+          Soon, you will be able to learn more about me, explore my projects,
+          read my resume, and find the best way to get in touch. For now, this
+          page is the beginning of my portfolio.
+        </p>
+      </div>
+
+      <figure class="portrait">
+        <div
+          class="portrait-placeholder"
+          role="img"
+          aria-label="Placeholder for Ema's future portrait"
+        >
+          Your photo will go here
+        </div>
+        <figcaption>A portrait of Ema will be added here later.</figcaption>
+      </figure>
+    </section>
+  </main>
 </body>
 </html>
