@@ -98,7 +98,11 @@
       list-style: none;
     }
 
-    .primary-navigation button {
+    .primary-navigation button,
+    .primary-navigation a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       min-height: 2.75rem;
       padding: 0.65rem 1.15rem;
       border: 2px solid var(--blue-700);
@@ -107,14 +111,21 @@
       color: var(--blue-900);
       font: 700 0.9rem/1.2 Arial, Helvetica, sans-serif;
       letter-spacing: 0.03em;
+      text-decoration: none;
       cursor: default;
     }
 
-    .primary-navigation button:hover {
+    .primary-navigation a {
+      cursor: pointer;
+    }
+
+    .primary-navigation button:hover,
+    .primary-navigation a:hover {
       background: var(--beige-300);
     }
 
-    .primary-navigation button:focus-visible {
+    .primary-navigation button:focus-visible,
+    .primary-navigation a:focus-visible {
       outline: 3px solid var(--beige-100);
       outline-offset: 2px;
       background: var(--blue-700);
@@ -155,7 +166,11 @@
       line-height: 1.15;
     }
 
-    .welcome-copy p:last-child {
+    #about-me {
+      scroll-margin-top: 1.5rem;
+    }
+
+    .about-copy p {
       max-width: 38rem;
       margin: 1.25rem 0 0;
       color: var(--blue-700);
@@ -172,26 +187,134 @@
       box-shadow: 0.9rem 0.9rem 0 var(--beige-300);
     }
 
-    .portrait-placeholder {
-      display: grid;
-      min-height: clamp(18rem, 38vw, 27rem);
-      place-items: center;
-      padding: 2rem;
-      border: 2px dashed var(--blue-500);
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: clamp(18rem, 38vw, 27rem);
+      object-fit: cover;
+      object-position: center;
+      border: 2px solid var(--blue-500);
       border-radius: 50% 50% 1rem 1rem;
-      background: var(--beige-100);
-      color: var(--blue-700);
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: 700;
-      text-align: center;
     }
 
-    figcaption {
-      padding: 1rem 0.5rem 0.25rem;
+    .projects {
+      margin-top: clamp(3.5rem, 8vw, 6.5rem);
+      scroll-margin-top: 1.5rem;
+    }
+
+    #resume,
+    #contact {
+      margin-top: clamp(3.5rem, 8vw, 6.5rem);
+      scroll-margin-top: 1.5rem;
+    }
+
+    .resume-frame {
+      width: 100%;
+      min-height: 70vh;
+      margin: 1.5rem 0 0;
+      border: 2px solid var(--blue-700);
+      border-radius: 1.25rem;
+      background: var(--beige-200);
+    }
+
+    .contact-email {
+      display: inline-block;
+      margin-top: 1.25rem;
+      color: var(--blue-900);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .contact-email:focus-visible {
+      outline: 3px solid var(--blue-300);
+      outline-offset: 3px;
+    }
+
+    .projects-header {
+      max-width: 40rem;
+      margin: 0 0 2rem;
+    }
+
+    .projects-header p {
+      max-width: 38rem;
+      margin: 1.25rem 0 0;
       color: var(--blue-700);
       font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 18rem;
+      padding: 1.5rem;
+      border: 2px solid var(--blue-700);
+      border-radius: 1.5rem;
+      background: var(--beige-200);
+      box-shadow: 0.55rem 0.55rem 0 var(--beige-300);
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.45rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .project-card p {
+      margin: 1rem 0 0;
+      color: var(--blue-700);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .project-card .project-topic {
+      margin: 0.75rem 0 0;
+      color: var(--blue-900);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .project-card .project-notice {
+      margin: 1rem 0 0;
+      padding: 0.75rem 0.85rem;
+      border-left: 4px solid var(--blue-700);
+      background: var(--beige-100);
+      color: var(--blue-900);
+      font-size: 0.85rem;
+    }
+
+    .project-card .project-link {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      color: var(--blue-900);
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 0.9rem;
-      text-align: center;
+      font-weight: 700;
+    }
+
+    .project-card .project-link:focus-visible {
+      outline: 3px solid var(--blue-300);
+      outline-offset: 3px;
+    }
+
+    .project-card.is-empty {
+      border-style: dashed;
+      background: var(--beige-100);
+      box-shadow: none;
+    }
+
+    .project-card.is-empty h3 {
+      color: var(--blue-500);
     }
 
     @media (max-width: 720px) {
@@ -213,9 +336,14 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .primary-navigation button {
+      .primary-navigation button,
+      .primary-navigation a {
         width: 100%;
         height: 100%;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
       }
 
       .introduction {
@@ -226,7 +354,7 @@
         text-align: center;
       }
 
-      .welcome-copy p:last-child {
+      .about-copy p {
         margin-inline: auto;
       }
 
@@ -254,40 +382,147 @@
       </p>
     </div>
 
-    <nav class="primary-navigation" aria-label="Planned portfolio sections">
+    <nav class="primary-navigation" aria-label="Portfolio sections">
       <ol>
-        <li><button type="button" aria-disabled="true">About Me</button></li>
-        <li><button type="button" aria-disabled="true">Projects</button></li>
-        <li><button type="button" aria-disabled="true">Resume</button></li>
+        <li><a href="#about-me">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
         <li>
-          <button type="button" aria-disabled="true">Contact Information</button>
+          <a href="#contact">Contact Information</a>
         </li>
       </ol>
     </nav>
   </header>
 
   <main>
-    <section class="introduction" aria-labelledby="welcome-heading">
-      <div class="welcome-copy">
-        <p class="section-label">A little introduction</p>
-        <h2 id="welcome-heading">This space is growing with me.</h2>
+    <section class="introduction" id="about-me" aria-labelledby="about-heading">
+      <div class="welcome-copy about-copy">
+        <p class="section-label">About</p>
+        <h2 id="about-heading">About Me</h2>
         <p>
-          Soon, you will be able to learn more about me, explore my projects,
-          read my resume, and find the best way to get in touch. For now, this
-          page is the beginning of my portfolio.
+          I’m a second-year student at the University of Toronto studying Data
+          Science and Computer Science. I’m interested in machine learning,
+          quantitative problem-solving, and building software that can solve
+          real-world problems. I work primarily with Python, R, and Java, and I
+          enjoy exploring projects at the intersection of computing, data, and
+          other fields. I’m currently looking for opportunities where I can
+          strengthen my technical skills, contribute to meaningful projects,
+          and learn from experienced teams.
         </p>
       </div>
 
       <figure class="portrait">
-        <div
-          class="portrait-placeholder"
-          role="img"
-          aria-label="Placeholder for Ema's future portrait"
+        <img
+          src="ema-portrait.jpg"
+          alt="Portrait of Ema"
         >
-          Your photo will go here
-        </div>
-        <figcaption>A portrait of Ema will be added here later.</figcaption>
       </figure>
+    </section>
+
+    <section class="projects" id="projects" aria-labelledby="projects-heading">
+      <div class="projects-header">
+        <p class="section-label">Selected work</p>
+        <h2 id="projects-heading">Projects</h2>
+        <p>
+          Selected work with links to public repositories. A third project
+          will appear here when it is ready.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Pink Desktop Calculator</h3>
+          <p>
+            A Python desktop calculator I built in Cursor using Spec-Kit for
+            spec-driven development. I wrote the requirements, specifications,
+            design decisions, and implementation tasks before coding, then
+            followed that workflow through implementation and testing.
+          </p>
+          <p>
+            I used Cursor’s AI-assisted tools to implement features, debug, and
+            refine the code while staying aligned with those specs and tests.
+            The calculator uses a custom recursive-descent parser instead of
+            eval, with full expressions, implicit multiplication, percentages,
+            powers, and trigonometric functions in degrees.
+          </p>
+          <p>
+            The calculation engine, session logic, and Tkinter interface are
+            separate layers so the core can be tested with pytest, including
+            test-driven development and handling of invalid or incomplete
+            expressions.
+          </p>
+          <a
+            class="project-link"
+            href="https://github.com/ema902/sdd-calculator"
+          >
+            View Pink Desktop Calculator on GitHub
+          </a>
+        </article>
+
+        <article class="project-card">
+          <h3>Recipe Recommendation System</h3>
+          <p class="project-topic">Python · PyGame · Graphs · Trees</p>
+          <p>
+            An interactive recipe recommendation application that uses graph
+            and tree-based data structures to organize recipe information and
+            generate personalized recommendations. Users can search and filter
+            recipes based on ingredients, dietary restrictions, excluded
+            ingredients, and recipe categories through a custom PyGame
+            interface.
+          </p>
+          <p>
+            I collaborated on this project in CSC111; it is not individual
+            work.
+          </p>
+          <p class="project-notice">
+            Note: This project utilizes a subset of the Food.com dataset
+            collected for academic research purposes. It is intended strictly
+            as a proof-of-concept and is not licensed for commercial production
+            use.
+          </p>
+          <a
+            class="project-link"
+            href="https://github.com/ema902/recipe_recommendation_system"
+          >
+            View Recipe Recommendation System on GitHub
+          </a>
+        </article>
+
+        <article class="project-card is-empty" aria-label="Third project coming soon">
+          <h3>Coming soon</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="projects" id="resume" aria-labelledby="resume-heading">
+      <div class="projects-header">
+        <p class="section-label">Experience</p>
+        <h2 id="resume-heading">Resume</h2>
+        <p>
+          <a class="project-link" href="resume.pdf">Open Ema’s resume (PDF)</a>
+        </p>
+      </div>
+      <object
+        class="resume-frame"
+        data="resume.pdf"
+        type="application/pdf"
+        aria-label="Ema’s resume"
+      >
+        <p>
+          <a href="resume.pdf">Download or open the resume PDF</a>
+        </p>
+      </object>
+    </section>
+
+    <section class="projects" id="contact" aria-labelledby="contact-heading">
+      <div class="projects-header">
+        <p class="section-label">Get in touch</p>
+        <h2 id="contact-heading">Contact Information</h2>
+        <p>
+          The best way to reach me is by email.
+        </p>
+        <a class="contact-email" href="mailto:tstory195@gmail.com">tstory195@gmail.com</a>
+      </div>
     </section>
   </main>
 </body>
