@@ -208,6 +208,15 @@
       scroll-margin-top: 1.5rem;
     }
 
+    .resume-frame {
+      width: 100%;
+      min-height: 70vh;
+      margin: 1.5rem 0 0;
+      border: 2px solid var(--blue-700);
+      border-radius: 1.25rem;
+      background: var(--beige-200);
+    }
+
     .contact-email {
       display: inline-block;
       margin-top: 1.25rem;
@@ -490,12 +499,19 @@
         <p class="section-label">Experience</p>
         <h2 id="resume-heading">Resume</h2>
         <p>
-          My resume is not posted for public download. If you would like a
-          copy, please email me.
+          <a class="project-link" href="resume.pdf">Open Ema’s resume (PDF)</a>
         </p>
-        <a class="contact-email" href="mailto:tstory195@gmail.com"
-          >tstory195@gmail.com</a>
       </div>
+      <object
+        class="resume-frame"
+        data="resume.pdf"
+        type="application/pdf"
+        aria-label="Ema’s resume"
+      >
+        <p>
+          <a href="resume.pdf">Download or open the resume PDF</a>
+        </p>
+      </object>
     </section>
 
     <section class="projects" id="contact" aria-labelledby="contact-heading">
