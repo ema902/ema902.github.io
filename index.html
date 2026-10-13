@@ -133,9 +133,19 @@
       box-shadow: 0 0 0 6px var(--blue-300);
     }
 
+    body:not(:has(#about-me:target, #projects:target, #resume:target, #contact:target)) .primary-navigation a[href="#about-me"],
+    body:has(#about-me:target) .primary-navigation a[href="#about-me"],
+    body:has(#projects:target) .primary-navigation a[href="#projects"],
+    body:has(#resume:target) .primary-navigation a[href="#resume"],
+    body:has(#contact:target) .primary-navigation a[href="#contact"] {
+      background: var(--blue-700);
+      color: var(--beige-100);
+    }
+
     main {
       width: min(68rem, calc(100% - 2rem));
-      margin: clamp(2.5rem, 7vw, 6rem) auto;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2rem, 5vw, 3.5rem);
     }
 
     .introduction {
@@ -197,15 +207,30 @@
       border-radius: 50% 50% 1rem 1rem;
     }
 
-    .projects {
-      margin-top: clamp(3.5rem, 8vw, 6.5rem);
-      scroll-margin-top: 1.5rem;
-    }
-
+    #about-me,
+    .projects,
     #resume,
     #contact {
-      margin-top: clamp(3.5rem, 8vw, 6.5rem);
-      scroll-margin-top: 1.5rem;
+      margin-top: 0;
+      scroll-margin-top: 100vh;
+    }
+
+    #about-me,
+    #projects,
+    #resume,
+    #contact {
+      display: none;
+    }
+
+    #projects:target,
+    #resume:target,
+    #contact:target {
+      display: block;
+    }
+
+    #about-me:target,
+    body:not(:has(#about-me:target, #projects:target, #resume:target, #contact:target)) #about-me {
+      display: grid;
     }
 
     .resume-frame {
@@ -293,6 +318,14 @@
       font-size: 0.85rem;
     }
 
+    .project-card .project-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-top: auto;
+      padding-top: 1.25rem;
+    }
+
     .project-card .project-link {
       margin-top: auto;
       padding-top: 1.25rem;
@@ -300,6 +333,11 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.9rem;
       font-weight: 700;
+    }
+
+    .project-card .project-links .project-link {
+      margin-top: 0;
+      padding-top: 0;
     }
 
     .project-card .project-link:focus-visible {
@@ -369,6 +407,34 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-height: 760px) {
+      .site-header {
+        padding-top: 0.5rem;
+      }
+
+      .banner {
+        padding: 1rem 1rem 1.5rem;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 7vw, 2.75rem);
+      }
+
+      .banner-copy {
+        margin-top: 0.75rem;
+        font-size: 0.95rem;
+      }
+
+      .primary-navigation {
+        margin-top: -0.75rem;
+      }
+
+      .primary-navigation ol {
+        gap: 0.5rem;
+        padding: 0.65rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -424,8 +490,7 @@
         <p class="section-label">Selected work</p>
         <h2 id="projects-heading">Projects</h2>
         <p>
-          Selected work with links to public repositories. A third project
-          will appear here when it is ready.
+          Selected work with links to public repositories and project pages.
         </p>
       </div>
 
@@ -488,8 +553,43 @@
           </a>
         </article>
 
-        <article class="project-card is-empty" aria-label="Third project coming soon">
-          <h3>Coming soon</h3>
+        <article class="project-card">
+          <h3>ZoomIn</h3>
+          <p class="project-topic">React · FastAPI · Python · scikit-learn · Playwright · Steel.dev</p>
+          <p>Sept. 2026</p>
+          <p>
+            I collaborated on this project with teammates at the Battle of the
+            Schools AI/ML Hackathon; it is not individual work.
+          </p>
+          <p>
+            Directed development of a full-stack subscription management
+            prototype at the Battle of the Schools AI/ML Hackathon,
+            collaborating with teammates responsible for UI/UX design.
+          </p>
+          <p>
+            Guided development of Playwright and Steel.dev browser automation
+            for assisted subscription cancellations, with pauses for
+            authentication and final user confirmation.
+          </p>
+          <p>
+            Incorporated website-scanning functionality using TF-IDF/logistic
+            regression, BeautifulSoup DOM heuristics, and Google Safe Browsing
+            to identify potentially deceptive payment practices.
+          </p>
+          <div class="project-links">
+            <a
+              class="project-link"
+              href="https://devpost.com/software/zoom-in"
+            >
+              View ZoomIn on Devpost
+            </a>
+            <a
+              class="project-link"
+              href="https://github.com/pusheen5000000/ZoomIn"
+            >
+              View ZoomIn on GitHub
+            </a>
+          </div>
         </article>
       </div>
     </section>
